@@ -1,0 +1,35 @@
+$blue: #a8e6ce;
+$green: #dcedc2;
+$orange: #ffd3b5;
+$pale-rose: #ffaaa6;
+$pink: #ff8c94;
+$white: #fff;
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $pink;
+  .current-time {
+    color: $white;
+    font-size: 100px;
+    margin-bottom: 40px;
+  }
+  .btn {
+    font-size: 40px;
+    border-radius: 15px;
+    border: 2px solid transparent;
+    background-color: $orange;
+    cursor: pointer;
+    padding: 10px;
+    min-width: 150px;
+    &:hover {
+      background-color: $green;
+    }
+    &.active {
+      background-color: $blue;
+    }
+  }
+}
