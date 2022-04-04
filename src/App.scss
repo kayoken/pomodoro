@@ -6,18 +6,27 @@ $pink: #ff8c94;
 $white: #fff;
 
 .app {
+  transition: background-color 0.5s;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   background-color: $pink;
-  .current-time {
+  .timer {
+    transition: color 0.5s;
     color: $white;
     font-size: 100px;
     margin-bottom: 40px;
   }
+  &.active {
+    background-color: $green;
+    .timer {
+      color: #000;
+    }
+  }
   .btn {
+    transition: all 0.5s;
     font-size: 40px;
     border-radius: 15px;
     border: 2px solid transparent;
@@ -29,7 +38,11 @@ $white: #fff;
       background-color: $green;
     }
     &.active {
-      background-color: $blue;
+      background-color: $pink;
+      color: $white;
+      &:hover {
+        background-color: $pale-rose;
+      }
     }
   }
 }
