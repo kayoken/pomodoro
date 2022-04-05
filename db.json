@@ -1,6 +1,6 @@
 {
   "records": [
-    { "seconds": 1, "date": "january" },
+    { "seconds": 70000, "date": "january" },
     { "seconds": 700, "date": "february" },
     { "seconds": 3000, "date": "march" },
     { "seconds": 1900, "date": "april" }

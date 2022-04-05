@@ -6,25 +6,25 @@ $pink: #ff8c94;
 $white: #fff;
 $black: #4f4f4f;
 
-.app {
+.app-container {
   transition: background-color 1.5s;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: $pink;
+  background-color: $green;
   .timer {
     width: 400px;
     transition: color 0.5s;
-    color: $white;
+    color: $black;
     font-size: 100px;
     margin-bottom: 40px;
   }
   &.active {
-    background-color: $green;
+    background-color: $pink;
     .timer {
-      color: $black;
+      color: $white;
     }
   }
   .btn {
@@ -33,18 +33,18 @@ $black: #4f4f4f;
     font-size: 35px;
     border-radius: 50px;
     border: 2px solid transparent;
-    background-color: $orange;
+    background-color: $pink;
     cursor: pointer;
     padding: 10px;
     min-width: 150px;
     &:hover {
-      background-color: $green;
+      background-color: $orange;
     }
     &.active {
-      background-color: $pink;
-      color: $white;
+      background-color: $green;
+      color: $black;
       &:hover {
-        background-color: $pale-rose;
+        background-color: $orange;
       }
     }
   }

@@ -49,7 +49,7 @@ function App() {
         <Route
           path="/"
           element={
-            <div className={`app ${timerActive ? "active" : ""}`}>
+            <div className={`app-container ${timerActive ? "active" : ""}`}>
               <Timer seconds={seconds} />
               <div>
                 <Button onClick={handleToggleActive} active={timerActive}>

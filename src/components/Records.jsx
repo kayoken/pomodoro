@@ -1,7 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { calculateTime } from "../utils/utils";
 
 const Records = ({ records }) => {
-  return records.map((record) => <div key={record.date}>{record.seconds}</div>);
+  return (
+    <div className="app-container records">
+      {records.map((record) => (
+        <div key={record.date}>
+          <span className="date">{record.date}</span>:{" "}
+          {calculateTime(record.seconds)}
+        </div>
+      ))}
+      <Link className="link" to="/">
+        Back
+      </Link>
+    </div>
+  );
 };
 
 export default Records;
