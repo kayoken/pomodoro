@@ -4,7 +4,7 @@ import Timer from "./components/Timer";
 import Button from "./components/Button";
 
 function App() {
-  const [seconds, setSeconds] = useState(7195);
+  const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
   const [intervalId, setIntervalId] = useState(0);
   const [records, setRecords] = useState({});
