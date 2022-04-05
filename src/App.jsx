@@ -59,13 +59,15 @@ function App() {
                   Save
                 </Button>
                 <div className="records">
-                  <Link to="/records">Records</Link>
+                  {records.length && <Link to="/records">Records</Link>}
                 </div>
               </div>
             </div>
           }
         ></Route>
-        <Route path="/records" element={<Records records={records} />} />
+        {records.length && (
+          <Route path="/records" element={<Records records={records} />} />
+        )}
       </Routes>
     </Router>
   );

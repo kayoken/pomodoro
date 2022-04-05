@@ -1,7 +1,7 @@
 import React from "react";
 
-const Records = () => {
-  return <div>Records</div>;
+const Records = ({ records }) => {
+  return records.map((record) => <div key={record.date}>{record.seconds}</div>);
 };
 
 export default Records;
