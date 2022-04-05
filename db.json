@@ -1,5 +1,8 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" }
+  "records": [
+    { "seconds": 1, "date": "january" },
+    { "seconds": 700, "date": "february" },
+    { "seconds": 3000, "date": "march" },
+    { "seconds": 1900, "date": "april" }
+  ]
 }

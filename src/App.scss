@@ -15,7 +15,7 @@ $black: #4f4f4f;
   height: 100vh;
   background-color: $pink;
   .timer {
-    width: 450px;
+    width: 400px;
     transition: color 0.5s;
     color: $white;
     font-size: 100px;
@@ -46,6 +46,13 @@ $black: #4f4f4f;
       &:hover {
         background-color: $pale-rose;
       }
+    }
+  }
+  .records {
+    margin-top: 40px;
+    text-align: center;
+    a {
+      font-size: 18px;
     }
   }
 }
