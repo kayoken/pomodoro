@@ -1,6 +1,6 @@
-const Button = ({ children, onClick, timerActive }) => {
+const Button = ({ children, onClick, active }) => {
   return (
-    <button onClick={onClick} className={`btn ${timerActive ? "active" : ""}`}>
+    <button onClick={onClick} className={`btn ${active ? "active" : ""}`}>
       {children}
     </button>
   );
