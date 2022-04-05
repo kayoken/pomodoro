@@ -29,6 +29,8 @@ function App() {
   };
 
   const handleToggleActive = () => {
+    const date = new Date();
+    console.log(date);
     if (!timerActive) {
       const newIntervalId = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
@@ -41,7 +43,25 @@ function App() {
     }
   };
 
-  const handleSave = () => {};
+  const handleSave = async () => {
+    const record = {
+      // id: 333,
+      seconds: seconds,
+      date: "september",
+    };
+
+    const res = await fetch("http://localhost:3001/records", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(record),
+    });
+
+    const data = await res.json();
+
+    console.log(data);
+  };
 
   return (
     <Router>
