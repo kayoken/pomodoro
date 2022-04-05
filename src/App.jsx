@@ -10,7 +10,7 @@ function App() {
   const [timerActive, setTimerActive] = useState(false);
   const [intervalId, setIntervalId] = useState(0);
   const [records, setRecords] = useState({});
-  const [timeStamp, setTimeStamp] = useState({});
+  const [timeStamp, setTimeStamp] = useState(new Date());
 
   useEffect(() => {
     const getRecords = async () => {

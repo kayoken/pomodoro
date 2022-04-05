@@ -6,7 +6,7 @@ const Records = ({ records }) => {
   return (
     <div className="app-container records">
       {records.map((record) => (
-        <div key={record.date}>
+        <div key={record.id}>
           <span className="date">{record.date}</span>:{" "}
           {calculateTime(record.seconds)}
         </div>
