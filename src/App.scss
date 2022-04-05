@@ -29,7 +29,8 @@ $black: #4f4f4f;
   }
   .btn {
     margin: 0 20px;
-    transition: all 0.5s;
+    transition: background-color 0.5s;
+    font-weight: 700;
     font-size: 35px;
     border-radius: 50px;
     border: 2px solid transparent;
@@ -45,6 +46,15 @@ $black: #4f4f4f;
       color: $black;
       &:hover {
         background-color: $orange;
+      }
+    }
+    &:disabled {
+      color: #bebebe;
+      background-color: rgb(224, 224, 224);
+      font-weight: 300;
+      &:hover {
+        color: #bebebe;
+        background-color: rgb(224, 224, 224);
       }
     }
   }

@@ -75,7 +75,11 @@ function App() {
                 <Button onClick={handleToggleActive} active={timerActive}>
                   {timerActive ? "Stop" : "Start"}
                 </Button>
-                <Button onClick={handleSave} active={timerActive}>
+                <Button
+                  disabled={timerActive}
+                  onClick={handleSave}
+                  active={timerActive}
+                >
                   Save
                 </Button>
                 <div className="records">
