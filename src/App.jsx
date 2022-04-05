@@ -10,6 +10,7 @@ function App() {
   const [timerActive, setTimerActive] = useState(false);
   const [intervalId, setIntervalId] = useState(0);
   const [records, setRecords] = useState({});
+  const [timeStamp, setTimeStamp] = useState({});
 
   useEffect(() => {
     const getRecords = async () => {
@@ -29,10 +30,11 @@ function App() {
   };
 
   const handleToggleActive = () => {
-    const date = new Date();
-    console.log(date);
+    let date = null;
+    let newIntervalId = null;
     if (!timerActive) {
-      const newIntervalId = setInterval(() => {
+      setTimeStamp(new Date());
+      newIntervalId = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
       }, 1000);
       setIntervalId(newIntervalId);
@@ -45,9 +47,8 @@ function App() {
 
   const handleSave = async () => {
     const record = {
-      // id: 333,
       seconds: seconds,
-      date: "september",
+      date: timeStamp,
     };
 
     const res = await fetch("http://localhost:3001/records", {
