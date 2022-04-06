@@ -1,0 +1,73 @@
+$blue: #a8e6ce;
+$green: #dcedc2;
+$orange: #ffd3b5;
+$pale-rose: #ffaaa6;
+$pink: #ff8c94;
+$white: #fff;
+$black: #4f4f4f;
+
+.app-container {
+  transition: background-color 1.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $green;
+  .timer {
+    width: 400px;
+    transition: color 0.5s;
+    color: $black;
+    font-size: 100px;
+    margin-bottom: 40px;
+  }
+  &.active {
+    background-color: $pink;
+    .timer {
+      color: $white;
+    }
+  }
+  .btn {
+    margin: 0 20px;
+    transition: background-color 0.5s;
+    font-weight: 700;
+    font-size: 35px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    background-color: $pink;
+    cursor: pointer;
+    padding: 10px;
+    min-width: 150px;
+    &:hover {
+      background-color: $orange;
+    }
+    &.active {
+      background-color: $green;
+      color: $black;
+      &:hover {
+        background-color: $orange;
+      }
+    }
+    &:disabled {
+      color: #bebebe;
+      background-color: rgb(224, 224, 224);
+      font-weight: 300;
+      &:hover {
+        color: #bebebe;
+        background-color: rgb(224, 224, 224);
+      }
+    }
+  }
+  .records-link {
+    margin-top: 40px;
+    text-align: center;
+    a {
+      font-size: 18px;
+    }
+  }
+  &.records {
+    .link {
+      margin-top: 40px;
+    }
+  }
+}

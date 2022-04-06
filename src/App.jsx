@@ -1,45 +1,99 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { Link, BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.scss";
+import Timer from "./components/Timer";
+import Button from "./components/Button";
+import Records from "./components/Records";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [seconds, setSeconds] = useState(0);
+  const [timerActive, setTimerActive] = useState(false);
+  const [intervalId, setIntervalId] = useState(0);
+  const [records, setRecords] = useState([]);
+  const [timeStamp, setTimeStamp] = useState(new Date());
+
+  useEffect(() => {
+    const getRecords = async () => {
+      const records = await fetchRecords();
+
+      setRecords(records);
+    };
+
+    getRecords();
+  }, []);
+
+  const fetchRecords = async () => {
+    const res = await fetch("http://localhost:3001/records");
+    const data = await res.json();
+
+    return data;
+  };
+
+  const handleToggleActive = () => {
+    let date = null;
+    let newIntervalId = null;
+    if (!timerActive) {
+      setTimeStamp(new Date());
+      newIntervalId = setInterval(() => {
+        setSeconds((seconds) => seconds + 1);
+      }, 1000);
+      setIntervalId(newIntervalId);
+      setTimerActive(true);
+    } else {
+      clearInterval(intervalId);
+      setTimerActive(false);
+    }
+  };
+
+  const handleSave = async () => {
+    const record = {
+      seconds: seconds,
+      date: timeStamp,
+    };
+
+    const res = await fetch("http://localhost:3001/records", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(record),
+    });
+    const data = await res.json();
+
+    setRecords([...records, data]);
+    console.log(records);
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className={`app-container ${timerActive ? "active" : ""}`}>
+              <Timer seconds={seconds} />
+              <div>
+                <Button onClick={handleToggleActive} active={timerActive}>
+                  {timerActive ? "Stop" : "Start"}
+                </Button>
+                <Button
+                  disabled={timerActive}
+                  onClick={handleSave}
+                  active={timerActive}
+                >
+                  Save
+                </Button>
+                <div className="records-link">
+                  <Link to="/records">Records</Link>
+                </div>
+              </div>
+            </div>
+          }
+        ></Route>
+        <Route path="/records" element={<Records records={records} />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
