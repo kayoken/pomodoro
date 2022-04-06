@@ -9,7 +9,7 @@ function App() {
   const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
   const [intervalId, setIntervalId] = useState(0);
-  const [records, setRecords] = useState({});
+  const [records, setRecords] = useState([]);
   const [timeStamp, setTimeStamp] = useState(new Date());
 
   useEffect(() => {
@@ -58,10 +58,10 @@ function App() {
       },
       body: JSON.stringify(record),
     });
-
     const data = await res.json();
 
-    console.log(data);
+    setRecords([...records, data]);
+    console.log(records);
   };
 
   return (
@@ -83,16 +83,14 @@ function App() {
                 >
                   Save
                 </Button>
-                <div className="records">
-                  {records.length && <Link to="/records">Records</Link>}
+                <div className="records-link">
+                  <Link to="/records">Records</Link>
                 </div>
               </div>
             </div>
           }
         ></Route>
-        {records.length && (
-          <Route path="/records" element={<Records records={records} />} />
-        )}
+        <Route path="/records" element={<Records records={records} />} />
       </Routes>
     </Router>
   );

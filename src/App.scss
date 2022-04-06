@@ -58,11 +58,16 @@ $black: #4f4f4f;
       }
     }
   }
-  .records {
+  .records-link {
     margin-top: 40px;
     text-align: center;
     a {
       font-size: 18px;
+    }
+  }
+  &.records {
+    .link {
+      margin-top: 40px;
     }
   }
 }

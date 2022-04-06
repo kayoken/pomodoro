@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { calculateTime } from "../utils/utils";
 
 const Records = ({ records }) => {
+  console.log(records);
+
   return (
     <div className="app-container records">
       {records.map((record) => (
