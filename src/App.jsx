@@ -61,7 +61,6 @@ function App() {
     const data = await res.json();
 
     setRecords([...records, data]);
-    console.log(records);
   };
 
   return (
